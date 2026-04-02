@@ -1,0 +1,9 @@
+{
+  "name": "dipclub",
+  "version": "1.0.0",
+  "description": "THE DIP — Cultural space at Nikolina Gora",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

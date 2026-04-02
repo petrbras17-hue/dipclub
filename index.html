@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE DIP — Культурное пространство на Николиной Горе</title>
+    <meta name="description" content="THE DIP — живое культурное пространство на Дипломатическом пляже Николиной Горы. Кафе, мероприятия, йога, искусство на берегу Москвы-реки.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #1B3A2D;
+            --copper: #B8774E;
+            --sand: #E8DED1;
+            --warm: #FAF8F5;
+            --char: #2C2C2C;
+            --char-l: #555;
+            --line: #D0C8BC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--char);
+            background: var(--warm);
+            line-height: 1.8;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+            line-height: 1.25;
+        }
+
+        .wrap {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(160deg, #1B3A2D 0%, #2D5A45 40%, #5B8FA8 70%, #B8774E 100%);
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 80%, rgba(91,143,168,0.2) 0%, transparent 70%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            padding: 60px 28px;
+        }
+
+        .hero-place {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #FAF8F5;
+            letter-spacing: 6px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: up 1s ease forwards 0.2s;
+        }
+
+        .hero-line {
+            width: 48px;
+            height: 1.5px;
+            background: var(--copper);
+            margin: 0 auto 28px;
+            opacity: 0;
+            animation: up 1s ease forwards 0.5s;
+        }
+
+        .hero p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            color: rgba(255,255,255,0.65);
+            font-style: italic;
+            font-weight: 300;
+            max-width: 520px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: up 1s ease forwards 0.7s;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            opacity: 0;
+            animation: up 1s ease forwards 1.2s;
+        }
+
+        .scroll-hint span {
+            display: block;
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes up { to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        * { --delay: 0; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition-delay: var(--delay);
+        }
+        .reveal.vis { opacity: 1; transform: none; }
+
+        /* ── SECTION BASE ── */
+        section { padding: 100px 0; }
+
+        .stag { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: var(--copper); margin-bottom: 12px; }
+        .sh { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--forest); margin-bottom: 20px; }
+        .sp { font-size: 1.02rem; color: var(--char-l); max-width: 600px; }
+        .divider { width: 48px; height: 1px; background: var(--line); margin: 60px 0; }
+
+        /* ── IDEA ── */
+        .idea { background: var(--warm); }
+
+        .idea-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--forest);
+            line-height: 1.7;
+            max-width: 620px;
+            position: relative;
+            padding-left: 24px;
+            border-left: 2px solid var(--copper);
+        }
+
+        /* ── PILLARS ── */
+        .pillars { background: var(--forest); color: #FAF8F5; }
+        .pillars .stag { color: rgba(184,119,78,0.7); }
+        .pillars .sh { color: var(--sand); }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .pillar {
+            padding: 36px 32px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            transition: border-color 0.3s;
+        }
+
+        .pillar:hover { border-color: var(--copper); }
+
+        .pillar h3 {
+            font-size: 1.4rem;
+            color: var(--sand);
+            margin-bottom: 10px;
+        }
+
+        .pillar p {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.75;
+        }
+
+        /* ── WHAT ── */
+        .what { background: var(--warm); }
+
+        .what-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .what-card {
+            padding: 32px 24px;
+            background: white;
+            border-radius: 3px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .what-card:hover {
+            border-bottom-color: var(--copper);
+            transform: translateY(-3px);
+        }
+
+        .what-card h3 {
+            font-size: 1.15rem;
+            color: var(--forest);
+            margin-bottom: 8px;
+        }
+
+        .what-card p {
+            font-size: 0.88rem;
+            color: var(--char-l);
+            line-height: 1.7;
+        }
+
+        /* ── TERRITORY ── */
+        .territory { background: var(--sand); }
+
+        .terr-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 40px;
+        }
+
+        .terr-list { list-style: none; }
+
+        .terr-list li {
+            padding: 10px 0;
+            font-size: 0.95rem;
+            color: var(--char);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .terr-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--copper);
+        }
+
+        .terr-list h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--forest);
+            margin-bottom: 12px;
+            padding-left: 0;
+        }
+
+        .terr-list h4::before { content: none; }
+
+        /* ── NUMBERS ── */
+        .numbers { background: var(--forest); color: #FAF8F5; text-align: center; }
+        .numbers .stag { color: rgba(184,119,78,0.7); }
+
+        .num-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .num-item h3 {
+            font-size: 2.2rem;
+            color: var(--copper);
+            margin-bottom: 6px;
+        }
+
+        .num-item p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 1px;
+        }
+
+        /* ── FUTURE ── */
+        .future { background: var(--warm); }
+
+        .future-phases {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .phase {
+            padding: 36px 32px;
+            border-radius: 3px;
+        }
+
+        .phase-now {
+            background: var(--forest);
+            color: #FAF8F5;
+        }
+
+        .phase-next {
+            background: white;
+            border: 1px solid var(--line);
+        }
+
+        .phase-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .phase-now .phase-label { color: var(--copper); }
+        .phase-next .phase-label { color: var(--copper); }
+
+        .phase h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .phase-now h3 { color: var(--sand); }
+        .phase-next h3 { color: var(--forest); }
+
+        .phase ul {
+            list-style: none;
+            font-size: 0.9rem;
+            line-height: 1.9;
+        }
+
+        .phase-now ul { color: rgba(255,255,255,0.6); }
+        .phase-next ul { color: var(--char-l); }
+
+        .phase li::before {
+            content: '\2014 ';
+            opacity: 0.4;
+        }
+
+        /* ── VISION ── */
+        .vision {
+            background: linear-gradient(160deg, var(--forest) 0%, #2D5A45 100%);
+            color: #FAF8F5;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .vision h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--sand);
+            margin-bottom: 28px;
+        }
+
+        .vision p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 560px;
+            margin: 0 auto 16px;
+        }
+
+        .vision-sig {
+            margin-top: 48px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: rgba(232,222,209,0.5);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 32px 0;
+            background: #111;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 1px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .pillar-grid,
+            .terr-cols,
+            .future-phases { grid-template-columns: 1fr; }
+
+            .what-grid { grid-template-columns: 1fr 1fr; }
+            .num-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+            section { padding: 72px 0; }
+        }
+
+        @media (max-width: 500px) {
+            .what-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-place">Дипломатический пляж &middot; Николина Гора</p>
+            <h1>THE DIP</h1>
+            <div class="hero-line"></div>
+            <p>Живое пространство на берегу Москвы-реки,<br>в котором продолжается история Николиной Горы</p>
+        </div>
+        <div class="scroll-hint"><span></span></div>
+    </section>
+
+    <!-- IDEA -->
+    <section class="idea">
+        <div class="wrap">
+            <p class="stag reveal">Идея</p>
+            <h2 class="sh reveal">Продолжение истории</h2>
+            <p class="sp reveal">В 1926 году кооператив РАНИС объединил работников науки и искусства — людей, веривших в силу творчества и интеллекта. Здесь жили Прокофьев, Капица, Рихтер, Михалковы.</p>
+            <div class="divider reveal"></div>
+            <div class="idea-quote reveal">
+                Мы предлагаем превратить территорию Дипломатического пляжа в живое культурное пространство, которое сохраняет исторические ценности посёлка и становится точкой притяжения для никологорцев, их друзей и гостей.
+            </div>
+            <div class="divider reveal"></div>
+            <p class="sp reveal">Это не коммерческий проект на чужой территории. Это пространство, в котором дух Николиной Горы живёт и развивается. Начинаем с малого, своими руками, с душой — и растём вместе с местом.</p>
+        </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="pillars">
+        <div class="wrap">
+            <p class="stag reveal">Смысл</p>
+            <h2 class="sh reveal">Три столпа</h2>
+            <div class="pillar-grid">
+                <div class="pillar reveal">
+                    <h3>Наследие</h3>
+                    <p>Сохранение и продолжение культурных ценностей, заложенных основателями РАНИС. Каждое решение — через призму «достойно ли это Николиной Горы».</p>
+                </div>
+                <div class="pillar reveal">
+                    <h3>Сообщество</h3>
+                    <p>Открытое пространство, где соседи становятся друзьями. Где дети играют, пока родители наслаждаются бранчем. Где можно прийти одному и уйти с новым знакомством.</p>
+                </div>
+                <div class="pillar reveal">
+                    <h3>Жизнь</h3>
+                    <p>Место, которое дышит и меняется со временами года. Летом — река и закаты. Зимой — тепло и камин. Круглый год — культура, встречи, впечатления.</p>
+                </div>
+                <div class="pillar reveal">
+                    <h3>Благоустройство</h3>
+                    <p>Прибрежная зона, которой может гордиться весь посёлок. Чистота, порядок, красота — не разово, а каждый день.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE CREATE -->
+    <section class="what">
+        <div class="wrap">
+            <p class="stag reveal">Пространство</p>
+            <h2 class="sh reveal">Что мы создаём</h2>
+            <p class="sp reveal">Начинаем с того, что можно сделать уже этим летом.</p>
+            <div class="what-grid">
+                <div class="what-card reveal">
+                    <h3>Кафе на реке</h3>
+                    <p>Пицца из дровяной печи, сезонное меню, воскресные бранчи. Авторская посуда молодых художников — можно купить и забрать на память.</p>
+                </div>
+                <div class="what-card reveal">
+                    <h3>Мероприятия</h3>
+                    <p>Свадьбы, дни рождения, корпоративы. Бизнес-завтраки, стратсессии, нетворкинг. Полная организация.</p>
+                </div>
+                <div class="what-card reveal">
+                    <h3>Йога</h3>
+                    <p>Утренние практики на берегу реки. Тренеры уже есть, йога на ДИПе уже проводилась. Медитации, ретриты.</p>
+                </div>
+                <div class="what-card reveal">
+                    <h3>Культура</h3>
+                    <p>Киновечера, живая музыка, литературные вечера, книжный клуб, беседы и дискуссии в духе традиций посёлка.</p>
+                </div>
+                <div class="what-card reveal">
+                    <h3>Арт и творчество</h3>
+                    <p>Арт-терапия, мастер-классы, выставки, опен-коллы для художников. Дорога молодым талантам.</p>
+                </div>
+                <div class="what-card reveal">
+                    <h3>Активный отдых</h3>
+                    <p>SUP-борды, лодки, велосипеды. Детские праздники, фестивали, ярмарки. Жизнь на воде и на берегу.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERRITORY -->
+    <section class="territory">
+        <div class="wrap">
+            <p class="stag reveal">Территория</p>
+            <h2 class="sh reveal">Что мы берём на себя</h2>
+            <p class="sp reveal">Благоустройство прибрежной зоны — не только наш бизнес, но и наша ответственность перед посёлком.</p>
+            <div class="terr-cols">
+                <div class="reveal">
+                    <ul class="terr-list">
+                        <h4>Уже сейчас</h4>
+                        <li>Ежедневная уборка территории пляжа</li>
+                        <li>Вывоз мусора со всей территории</li>
+                        <li>Ландшафтное благоустройство</li>
+                        <li>Навигация, освещение, зоны отдыха</li>
+                        <li>Организация парковочной зоны</li>
+                        <li>Контроль за порядком и безопасностью</li>
+                    </ul>
+                </div>
+                <div class="reveal">
+                    <ul class="terr-list">
+                        <h4>В перспективе</h4>
+                        <li>Государственные гранты на благоустройство</li>
+                        <li>Программы «Парки Подмосковья», ФКГС</li>
+                        <li>Фонды культурных инициатив</li>
+                        <li>Частные инвестиции в инфраструктуру</li>
+                        <li>Падел-корты (отдельный инвестор)</li>
+                        <li>Каток и детская площадка</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section class="numbers">
+        <div class="wrap">
+            <p class="stag reveal">Цифры</p>
+            <div class="num-grid">
+                <div class="num-item reveal">
+                    <h3>5 млн</h3>
+                    <p>Стартовые инвестиции</p>
+                </div>
+                <div class="num-item reveal">
+                    <h3>1 сезон</h3>
+                    <p>Окупаемость</p>
+                </div>
+                <div class="num-item reveal">
+                    <h3>2.3 млн</h3>
+                    <p>Выручка в месяц</p>
+                </div>
+                <div class="num-item reveal">
+                    <h3>365</h3>
+                    <p>Дней в году</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUTURE -->
+    <section class="future">
+        <div class="wrap">
+            <p class="stag reveal">Развитие</p>
+            <h2 class="sh reveal">Два этапа</h2>
+            <div class="future-phases">
+                <div class="phase phase-now reveal">
+                    <p class="phase-label">Этап 1 — Лето 2026</p>
+                    <h3>Запуск</h3>
+                    <ul>
+                        <li>Восстановление кафе своими руками</li>
+                        <li>Мебель ручной работы из дерева</li>
+                        <li>Минимальная кухня: печь + холодильник</li>
+                        <li>Площадка для мероприятий</li>
+                        <li>Йога, культурная программа</li>
+                        <li>Прокат SUP, лодки, велосипеды</li>
+                        <li>Благоустройство территории</li>
+                    </ul>
+                </div>
+                <div class="phase phase-next reveal">
+                    <p class="phase-label">Этап 2 — 2027+</p>
+                    <h3>Развитие</h3>
+                    <ul>
+                        <li>Падел-корты (отдельные инвестиции)</li>
+                        <li>Каток и ледяная горка зимой</li>
+                        <li>Расширение кафе и меню</li>
+                        <li>Детская площадка (панда-парк)</li>
+                        <li>Госгранты на благоустройство</li>
+                        <li>Мобильное приложение</li>
+                        <li>Членская программа</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="vision">
+        <div class="wrap">
+            <h2 class="reveal">Место, достойное<br>Николиной Горы</h2>
+            <p class="reveal">Благоустроенная прибрежная зона. Точка притяжения для жителей. Культурная программа круглый год. Порядок и красота на пляже.</p>
+            <p class="reveal">Мы начинаем с малого и растём вместе с местом.<br>Своими руками, с душой.</p>
+            <div class="vision-sig reveal">THE DIP &middot; Дипломатический пляж &middot; 2026</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>THE DIP &copy; 2026 &middot; Николина Гора</p>
+    </footer>
+
+    <script>
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('vis'), i * 80);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+</html>
