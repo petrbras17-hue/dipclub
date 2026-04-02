@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE DIP — Культурное пространство на Николиной Горе</title>
     <meta name="description" content="THE DIP — живое культурное пространство на Дипломатическом пляже Николиной Горы. Кафе, мероприятия, йога, искусство на берегу Москвы-реки.">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B3A2D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="THE DIP">
+    <link rel="apple-touch-icon" href="images/icon-180.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -416,6 +425,7 @@
             <h1>THE DIP</h1>
             <div class="hero-line"></div>
             <p>Живое пространство на берегу Москвы-реки,<br>в котором продолжается история Николиной Горы</p>
+            <a href="https://t.me/dipclub_bot" target="_blank" rel="noopener" style="display:inline-block;margin-top:32px;padding:14px 36px;border:1px solid rgba(255,255,255,0.3);color:#FAF8F5;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border-radius:40px;transition:all 0.3s;opacity:0;animation:up 1s ease forwards 0.8s;" onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.borderColor='rgba(255,255,255,0.5)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(255,255,255,0.3)'">Написать нам</a>
         </div>
         <div class="scroll-hint"><span></span></div>
     </section>
@@ -593,6 +603,14 @@
 
     <!-- FOOTER -->
     <footer>
+        <div style="display:flex;justify-content:center;gap:16px;margin-bottom:16px;">
+            <a href="https://t.me/dipclub_bot" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='#B8774E';this.style.color='#B8774E'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.4)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 5L2 12.5l7 1M21 5l-4 16-8-8.5M21 5L9 13.5M9 13.5V20l3.5-3.5"/></svg>
+            </a>
+            <a href="https://www.instagram.com/dippadel" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s;" onmouseover="this.style.borderColor='#B8774E';this.style.color='#B8774E'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.4)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </a>
+        </div>
         <p>THE DIP &copy; 2026 &middot; Николина Гора</p>
     </footer>
 
@@ -606,6 +624,7 @@
             });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
     </script>
 </body>
 </html>
