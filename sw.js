@@ -1,4 +1,4 @@
-const CACHE = 'dipclub-v1';
+const CACHE = 'dipclub-v2';
 const ASSETS = ['/', '/index.html', '/images/hero.jpg'];
 
 self.addEventListener('install', e => {
